@@ -1,0 +1,208 @@
+<!-- Page Bienvenue + demande username -->
+
+{{ define "welcome" }}
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title> Hangman Game </title>
+  <link rel="stylesheet" href="static/css.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Luxurious+Roman&family=Mochiy+Pop+P+One&family=Moon+Dance&family=Teko:wght@300&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <h1>HANGMAN WEB</h1>
+    <form action="/Level" method="post">
+      <ul><input type="text" class="form__input" id="name" placeholder="Username" required="" name="Username" autocomplete="off"/></ul>
+      <ul><input type="submit" value="PLAY"></ul>
+    </form>
+  </header>
+
+  
+
+  
+
+  <footer>
+    <p class="bas"> La Squadra Sette </p>
+  </footer>
+</body>
+</html>
+{{ end }}
+
+<!-- Page choix des niveaux -->
+
+{{ define "home" }}
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title> Hangman Game </title>
+  <link rel="stylesheet" href="static/css.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Luxurious+Roman&family=Mochiy+Pop+P+One&family=Moon+Dance&family=Teko:wght@300&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+      <h1> Hangman Game</h1>
+    </header>
+
+    <p> choose your level : </p>
+    <form action="/hangman" method="post">
+      <ul><button name="subject" type="submit" value="EASY"><span>EASY</span></button></ul>
+      <ul><button name="subject" type="submit" value="MEDIUM"><span>MEDIUM</span></button></ul>
+      <ul><button name="subject" type="submit" value="HARD"><span>HARD</span></button></ul>
+      <ul><button name="subject" type="submit" value="TOWEROFGOD"><span>TOWER OF GOD</span></button></ul>
+    </form>
+
+    <footer>
+      <p class="bas"> La Squadra Sette </p>
+    </footer>
+
+</body>
+</html>
+{{ end }}
+
+<!-- Page Jeu + image pendu + tower of god-->
+
+{{ define "index" }}
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title> You are in Game </title>
+  <link rel="stylesheet" href="static/css.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Luxurious+Roman&family=Mochiy+Pop+P+One&family=Moon+Dance&family=Teko:wght@300&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+
+  <!-- barre menu haut de page-->
+  <header>
+    <nav>
+    <form action="/Level" method="post">
+      <ul>
+        <li>
+          <button name="GOBACK" type="submit" value="GOBACK">GO BACK</button>
+        </li>
+      </ul>
+    </form>
+    </nav>
+  </header>
+
+  <!-- hangman bonus dessin-->
+  <div class="container">
+    <div class="mainbloc">
+
+  
+  
+  
+      <!-- hanmgan clasique-->  
+
+      <div class="a">
+        <h1>{{ .MyScore }}</h1>
+        <h1>{{ .Title }}</h1>
+        <p> {{ .Sub }} </p>
+
+        <form action="/hangman" method="post">
+          <input type="text" class="form__input" id="name" placeholder="letter or word" required="" name="MyLetter" autocomplete="off"/>
+          <input type="submit" value="Send">
+        </form>
+
+        <p>{{ .LettreStateWeb }}</p>
+      </div>
+    </div>
+    <div class="blochangman">
+      <div class="imagependu">
+        //images pendu
+      </div>
+    </div>
+  </div>
+
+<footer>
+  <p class="bas"> La Squadra Sette </p>
+</footer>
+
+</body>
+</html>
+{{ end }}
+
+<!--commentaire lettre déjà utilisé-->
+
+{{ define "lettreused" }}
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title> Hangman Game </title>
+  <link rel="stylesheet" href="static/css.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Luxurious+Roman&family=Mochiy+Pop+P+One&family=Moon+Dance&family=Teko:wght@300&display=swap"
+    rel="stylesheet">
+</head>
+
+</head>
+
+<body>
+  <div class="a">
+    <p> Vous avez déjà utilisé cette lettre </p>
+  </div>
+</body>
+
+</html>
+{{ end }}
+
+<!-- Page Fin-->
+
+{{ define "endscreen" }}
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title> End of Hangman </title>
+  <link rel="stylesheet" href="static/css.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Luxurious+Roman&family=Mochiy+Pop+P+One&family=Moon+Dance&family=Teko:wght@300&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>GAME OVER</h1>
+  </header>
+  
+    <h1>
+      {{ .Sub }}
+      <form action="/" method="post">
+        <button name="PLAYAGAIN" type="submit" value="PLAYAGAIN">PLAY AGAIN</button>
+        <button name="PLAYAGAIN" type="submit" value="BACK TO HOME">BACK TO HOME</button>
+      </form>
+    </h1>
+    </p>
+  </div>
+</body>
+
+</html>
+{{ end }}
